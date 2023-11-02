@@ -17,7 +17,7 @@ export default function Home() {
       <Header ref={stickyElement} />
       <StickyCursor stickyElement={stickyElement} />
       <BottomBar />
-      <div className="flex flex-col items-center justify-center h-[80vh] ">
+      <div className="flex flex-col items-center justify-center h-[80vh]  mix-blend-difference cursor-default">
         <p className="font-extrabold text-6xl" style={{ color: textColour }}>
           Tailor Made Sites
         </p>

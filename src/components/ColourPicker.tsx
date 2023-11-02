@@ -7,18 +7,14 @@ interface ColourPickerProps {
 }
 
 const ColourPicker = ({ colour, changeColour }: ColourPickerProps) => {
-  //   const { setTextColour, textColour } = useColoursStore();
-
   return (
     <div className="absolute bottom-[70px]">
       <SketchPicker
         disableAlpha
         presetColors={[]}
-        // onChangeComplete={handleChangeComplete}
         color={colour}
         onChange={(colour) => {
           changeColour(colour.hex);
-          //   setTextColour(colour.hex);
         }}
       />
     </div>
