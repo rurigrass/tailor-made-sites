@@ -7,6 +7,13 @@ interface ColourPickerProps {
 }
 
 const ColourPicker = ({ colour, changeColour }: ColourPickerProps) => {
+  //THIS IS TO BLOCK AN ERROR
+  const error = console.error;
+  console.error = (...args: any) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+  };
+
   return (
     <div className="absolute bottom-[70px]">
       <SketchPicker

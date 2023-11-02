@@ -9,6 +9,7 @@ import { useRef } from "react";
 export default function Home() {
   const { textColour, backgroundColour } = useColoursStore();
   const stickyElement = useRef(null);
+
   return (
     <main
       className="flex min-h-screen h-[200vh] flex-col items-center justify-between"
