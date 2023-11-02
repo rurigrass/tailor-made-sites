@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-color": "^3.0.9",
     "framer-motion": "^10.16.4",
     "next": "14.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-color": "^2.19.3",
+    "react-dom": "^18",
+    "zustand": "^4.4.5"
   },
   "devDependencies": {
     "@types/node": "^20",
