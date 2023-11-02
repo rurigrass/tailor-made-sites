@@ -7,11 +7,18 @@ import { useColoursStore } from "../state/colours";
 interface BottomBarProps {}
 
 const BottomBar = ({}) => {
-  const { setTextColour, textColour, setBackgroundColour, backgroundColour } =
-    useColoursStore();
+  const {
+    setTextColour,
+    textColour,
+    setBackgroundColour,
+    backgroundColour,
+    setPrimaryColour,
+    primaryColour,
+  } = useColoursStore();
 
   const [textOpen, setTextOpen] = useState<boolean>(false);
   const [backgrounOpen, setBackgroundOpen] = useState<boolean>(false);
+  const [primaryOpen, setPrimaryOpen] = useState<boolean>(false);
   return (
     <div className="fixed bottom-0 w-full">
       <div className="relative flex p-1.5 m-1.5 gap-1.5 bg-gray-300 rounded-lg">
@@ -45,7 +52,21 @@ const BottomBar = ({}) => {
             Background
           </button>
         </div>
-        {/* <button>Click me</button> */}
+        <div>
+          {primaryOpen && (
+            <ColourPicker
+              colour={primaryColour}
+              changeColour={(newColour) => setPrimaryColour(newColour)}
+            />
+          )}
+          <button
+            className="p-3 rounded-lg"
+            style={{ backgroundColor: primaryColour }}
+            onClick={() => setPrimaryOpen(!primaryOpen)}
+          >
+            Primary
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -99,7 +99,7 @@ const StickyCursor = ({ stickyElement }: { stickyElement: any }) => {
   return (
     <motion.div
       transformTemplate={template}
-      className="fixed w-[15px] h-[15px] dark:bg-white bg-black rounded-[50%] pointer-events-none"
+      className="fixed w-[15px] h-[15px] dark:bg-white bg-black rounded-[50%] pointer-events-none invisible md:visible"
       ref={cursorRef}
       style={{
         left: smoothMouse.x,
