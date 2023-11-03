@@ -19,16 +19,23 @@ export default function Home() {
       <StickyCursor stickyElement={stickyElement} />
       <BottomBar />
       <div className="flex flex-col items-center justify-center h-[50vh]  mix-blend-difference ">
-        <p className="font-extrabold text-6xl" style={{ color: textColour }}>
-          Tailor Made Sites
-        </p>
+        <div
+          className="flex flex-wrap justify-center font-extrabold text-6xl"
+          style={{ color: textColour }}
+        >
+          <p>Tailor </p>
+          <p className="hidden sm:block">&nbsp;</p>
+          <p>Made</p>
+          <p className="hidden sm:block">&nbsp;</p>
+          <p>Sites</p>
+        </div>
         <p className="font-bold text-2xl" style={{ color: textColour }}>
           a site to suit you
         </p>
       </div>
-      <div className="h-[30vh] lg:h-[40vh] grid grid-cols-2 lg:grid-cols-3 m-4 gap-4">
+      <div className="h-[30vh] lg:h-[40vh] grid grid-cols-2 lg:grid-cols-3 m-4 gap-4 ">
         <p
-          className="lg:col-span-2 flex justify-center items-center font-bold text-2xl rounded-lg"
+          className="lg:col-span-2 flex justify-center items-center font-bold text-2xl rounded-lg "
           style={{ color: textColour, backgroundColor: primaryColour }}
         >
           POOP
