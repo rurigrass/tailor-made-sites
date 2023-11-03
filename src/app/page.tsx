@@ -1,6 +1,6 @@
 "use client";
 
-import BottomBar from "@/components/BottomBar";
+import BottomBar from "@/components/customiser/BottomBar";
 import Header from "@/components/Header";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
