@@ -26,7 +26,7 @@ export default function Home() {
           a site to suit you
         </p>
       </div>
-      <div className="h-[40vh] grid grid-cols-2 md:grid-cols-3 m-4 gap-4">
+      <div className="h-[30vh] lg:h-[40vh] grid grid-cols-2 md:grid-cols-3 m-4 gap-4">
         <p
           className="md:col-span-2 flex justify-center items-center font-bold text-2xl rounded-lg"
           style={{ color: textColour, backgroundColor: primaryColour }}

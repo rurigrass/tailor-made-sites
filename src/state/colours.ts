@@ -14,6 +14,6 @@ export const useColoursStore = create<ColoursProps>()((set) => ({
   setTextColour: (textColour: string) => set({ textColour }),
   backgroundColour: "#134546",
   setBackgroundColour: (backgroundColour: string) => set({ backgroundColour }),
-  primaryColour: "#ffffff",
+  primaryColour: "#be8080",
   setPrimaryColour: (primaryColour: string) => set({ primaryColour }),
 }));
