@@ -10,7 +10,7 @@ const Page = ({}) => {
   const { backgroundColour, primaryColour } = useColoursStore();
   const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
-    <div className="h-[100vh] flex flex-col items-center justify-center">
+    <div className="h-[100vh]  flex flex-col items-center justify-center">
       <CustomiserButton
         primaryColour={primaryColour}
         backgroundColour={backgroundColour}
