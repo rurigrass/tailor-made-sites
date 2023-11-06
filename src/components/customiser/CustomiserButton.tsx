@@ -16,7 +16,7 @@ const CustomiserButton = ({
   console.log(isOpen);
 
   return (
-    <div className="h-12 w-30 p-3 rounded-lg cursor-pointer overflow-hidden">
+    <div className="h-12 w-30 p-3 rounded-lg cursor-pointer overflow-hidden ">
       <motion.div
         className="relative w-full h-full"
         animate={{ top: isOpen ? "-0.7rem" : "-3.8rem" }}
