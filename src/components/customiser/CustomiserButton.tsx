@@ -16,14 +16,18 @@ const CustomiserButton = ({
   console.log(isOpen);
 
   return (
-    <div className="h-12 w-30 p-3 rounded-lg cursor-pointer overflow-hidden ">
+    <div className=" h-12 w-32 rounded-lg overflow-hidden cursor-pointer">
       <motion.div
-        className="relative w-full h-full"
-        animate={{ top: isOpen ? "-0.7rem" : "-3.8rem" }}
-        transition={{ duration: 0.5, type: "tween", ease: [0.76, 0, 0.24, 1] }}
+        className="relative"
+        animate={{ top: isOpen ? "-3rem" : "0rem" }}
+        transition={{
+          duration: 0.5,
+          type: "tween",
+          ease: [0.76, 0, 0.24, 1],
+        }}
       >
         <div
-          className="w-full h-full"
+          className="h-12 w-32"
           style={{ backgroundColor: primaryColour }}
           onClick={() => {
             toggleMenu();
@@ -32,7 +36,7 @@ const CustomiserButton = ({
           <PerspectiveText label="Customise" />
         </div>
         <div
-          className="w-full h-full"
+          className="h-12 w-32"
           style={{ backgroundColor: backgroundColour }}
           onClick={() => {
             toggleMenu();
