@@ -4,7 +4,7 @@ import { useState } from "react";
 import ColourPicker from "./ColourPicker";
 import { useColoursStore } from "../../state/colours";
 import CustomiserButton from "./CustomiserButton";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface BottomBarProps {}
 
@@ -26,13 +26,57 @@ const BottomBar = ({}) => {
   const variants = {
     open: {
       width: "100%",
-      transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
     },
     closed: {
       width: "9.25rem",
-      transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+      transition: {
+        duration: 0.75,
+        delay: 0.35,
+        type: "tween",
+        ease: [0.76, 0, 0.24, 1],
+      },
     },
   };
+
+  const colourPickers = [
+    {
+      name: "text",
+      colour: textColour,
+      open: textOpen,
+      openHook: setTextOpen,
+      pickerAction: setTextColour,
+    },
+    {
+      name: "background",
+      colour: backgroundColour,
+      open: backgrounOpen,
+      openHook: setBackgroundOpen,
+      pickerAction: setBackgroundColour,
+    },
+    {
+      name: "primary",
+      colour: primaryColour,
+      open: primaryOpen,
+      openHook: setPrimaryOpen,
+      pickerAction: setPrimaryColour,
+    },
+  ];
+
+  const perspective = {
+    initial: { opacity: 0 },
+    enter: (i: number) => ({
+      opacity: 1,
+      transition: { delay: 0.5 + i * 0.1 },
+    }),
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.25,
+      },
+    },
+  };
+
   return (
     <motion.div
       className="fixed bottom-0 right-0 w-full"
@@ -41,55 +85,46 @@ const BottomBar = ({}) => {
       initial={"closed"}
     >
       <div className="relative h-[3.5rem] m-1.5 bg-gray-300 rounded-lg">
-        {isOpen && (
-          <div className="flex gap-1.5 absolute left-1 bottom-1">
-            <div>
-              {textOpen && (
-                <ColourPicker
-                  colour={textColour}
-                  changeColour={(newColour) => setTextColour(newColour)}
-                />
-              )}
-              <button
-                className="p-3 rounded-lg"
-                style={{ backgroundColor: textColour }}
-                onClick={() => setTextOpen(!textOpen)}
-              >
-                Text
-              </button>
+        <AnimatePresence>
+          {isOpen && (
+            <div className="flex gap-1.5 absolute left-1 bottom-1">
+              {colourPickers.map((picker, i) => {
+                return (
+                  <motion.div
+                    key={i}
+                    custom={i}
+                    variants={perspective}
+                    animate="enter"
+                    exit="exit"
+                    initial="initial"
+                  >
+                    <AnimatePresence>
+                      {isOpen && (
+                        <div>
+                          {picker.open && (
+                            <ColourPicker
+                              colour={picker.colour}
+                              changeColour={(newColour) =>
+                                picker.pickerAction(newColour)
+                              }
+                            />
+                          )}
+                          <button
+                            className="p-3 rounded-lg"
+                            style={{ backgroundColor: picker.colour }}
+                            onClick={() => picker.openHook(!picker.open)}
+                          >
+                            {picker.name}
+                          </button>
+                        </div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
             </div>
-            <div>
-              {backgrounOpen && (
-                <ColourPicker
-                  colour={backgroundColour}
-                  changeColour={(newColour) => setBackgroundColour(newColour)}
-                />
-              )}
-              <button
-                className="p-3 rounded-lg"
-                style={{ backgroundColor: backgroundColour }}
-                onClick={() => setBackgroundOpen(!backgrounOpen)}
-              >
-                Background
-              </button>
-            </div>
-            <div>
-              {primaryOpen && (
-                <ColourPicker
-                  colour={primaryColour}
-                  changeColour={(newColour) => setPrimaryColour(newColour)}
-                />
-              )}
-              <button
-                className="p-3 rounded-lg"
-                style={{ backgroundColor: primaryColour }}
-                onClick={() => setPrimaryOpen(!primaryOpen)}
-              >
-                Primary
-              </button>
-            </div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
         <div className="absolute right-1 bottom-1">
           <CustomiserButton
             primaryColour={primaryColour}

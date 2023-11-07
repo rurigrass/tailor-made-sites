@@ -27,8 +27,8 @@ const CustomiserButton = ({
         }}
       >
         <div
-          className="h-12 w-32"
-          style={{ backgroundColor: primaryColour }}
+          className="h-12 w-32 bg-gray-300"
+          // style={{ backgroundColor: primaryColour }}
           onClick={() => {
             toggleMenu();
           }}
