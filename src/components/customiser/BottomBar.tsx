@@ -32,9 +32,9 @@ const BottomBar = ({}) => {
       width: "9.25rem",
       transition: {
         duration: 0.75,
-        delay: 0.35,
+        delay: 0.1,
         type: "tween",
-        ease: [0.76, 0, 0.24, 1],
+        ease: [0.3, 0.2, 0, 1],
       },
     },
   };
@@ -72,7 +72,7 @@ const BottomBar = ({}) => {
     exit: {
       opacity: 0,
       transition: {
-        duration: 0.25,
+        duration: 0.15,
       },
     },
   };
