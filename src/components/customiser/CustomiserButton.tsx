@@ -13,8 +13,6 @@ const CustomiserButton = ({
   isOpen,
   toggleMenu,
 }: CustomiserButtonProps) => {
-  console.log(isOpen);
-
   return (
     <div className="h-12 w-32 rounded-lg overflow-hidden cursor-pointer">
       <motion.div

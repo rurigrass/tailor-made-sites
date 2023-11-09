@@ -1,6 +1,5 @@
 interface HeaderProps {}
 import Magnetic from "./Magnetic";
-import styles from "./style.module.scss";
 import { ForwardedRef, Ref, forwardRef } from "react";
 
 const Header = forwardRef(function index(props, ref: any) {

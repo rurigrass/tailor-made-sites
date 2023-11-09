@@ -1,5 +1,6 @@
 "use client";
 
+import useMousePosition from "@/utils/useMousePosition";
 import {
   animate,
   motion,
@@ -9,17 +10,33 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-interface StickyCursorProps {}
+interface StickyCursorProps {
+  stickyElement: any;
+  titleElement: any;
+}
 
-const StickyCursor = ({ stickyElement }: { stickyElement: any }) => {
-  const [isHovered, setIsHovered] = useState<Boolean>(false);
+const StickyCursor = ({ stickyElement, titleElement }: StickyCursorProps) => {
+  const [isBurgerHovered, setIsBurgerHovered] = useState<Boolean>(false);
+  const [isTitleHovered, setIsTitleHovered] = useState<Boolean>(false);
+
   const cursorRef = useRef(null);
 
-  const cursorSize = isHovered ? 50 : 20;
+  let cursorSize = 20;
+  if (isBurgerHovered === true) {
+    cursorSize = 50;
+  } else if (isTitleHovered === true) {
+    cursorSize = 160;
+  } else {
+    cursorSize = 20;
+  }
+
+  const mousePosition = useMousePosition();
+
   const mouse = {
     x: useMotionValue(0),
     y: useMotionValue(0),
   };
+
   const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 };
   const smoothMouse = {
     x: useSpring(mouse.x, smoothOptions),
@@ -36,36 +53,48 @@ const StickyCursor = ({ stickyElement }: { stickyElement: any }) => {
     animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
   };
 
-  const manageMouseMove = (e: any) => {
-    const { clientX, clientY } = e;
-    const { left, top, width, height } =
-      stickyElement.current.getBoundingClientRect();
+  const manageMouseMove = () => {
+    //BURGER HOVER STUFF
+    const {
+      left: burgerLeft,
+      top: burgerTop,
+      width: burgerWidth,
+      height: burgerHeight,
+    } = stickyElement.current.getBoundingClientRect();
+    const burgerCenter = {
+      x: burgerLeft + burgerWidth / 2,
+      y: burgerTop + burgerHeight / 2,
+    };
+    const burgerDistance = {
+      x: mousePosition.x - burgerCenter.x,
+      y: mousePosition.y - burgerCenter.y,
+    };
 
-    const center = { x: left + width / 2, y: top + height / 2 };
-    const distance = { x: clientX - center.x, y: clientY - center.y };
-
-    if (isHovered) {
+    if (isBurgerHovered) {
       //rotate
-      rotate(distance);
+      rotate(burgerDistance);
       //Stretch the cursor based on the distance between the pointer and the custom cursor.
-      const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
-      const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3]);
-      const newScaleY = transform(absDistance, [0, width / 2], [1, 0.8]);
+      const absDistance = Math.max(
+        Math.abs(burgerDistance.x),
+        Math.abs(burgerDistance.y)
+      );
+      const newScaleX = transform(absDistance, [0, burgerHeight / 2], [1, 1.3]);
+      const newScaleY = transform(absDistance, [0, burgerWidth / 2], [1, 0.8]);
       scale.x.set(newScaleX);
       scale.y.set(newScaleY);
-      mouse.x.set(center.x - cursorSize / 2 + distance.x * 0.1);
-      mouse.y.set(center.y - cursorSize / 2 + distance.y * 0.1);
+      mouse.x.set(burgerCenter.x - cursorSize / 2 + burgerDistance.x * 0.1);
+      mouse.y.set(burgerCenter.y - cursorSize / 2 + burgerDistance.y * 0.1);
     } else {
-      mouse.x.set(clientX - cursorSize / 2);
-      mouse.y.set(clientY - cursorSize / 2);
+      mouse.x.set(mousePosition.x - cursorSize / 2);
+      mouse.y.set(mousePosition.y - cursorSize / 2);
     }
   };
 
-  const manageMouseOver = () => {
-    setIsHovered(true);
+  const manageMouseOverBurger = () => {
+    setIsBurgerHovered(true);
   };
-  const manageMouseLeave = () => {
-    setIsHovered(false);
+  const manageMouseLeaveBurger = () => {
+    setIsBurgerHovered(false);
     animate(
       cursorRef.current,
       { scaleX: 1, scaleY: 1 },
@@ -73,14 +102,40 @@ const StickyCursor = ({ stickyElement }: { stickyElement: any }) => {
     );
   };
 
+  const manageMouseOverTitle = () => {
+    setIsTitleHovered(true);
+  };
+  const manageMouseLeaveTitle = () => {
+    setIsTitleHovered(false);
+  };
+
   useEffect(() => {
     window.addEventListener("mousemove", manageMouseMove);
-    stickyElement.current.addEventListener("mouseover", manageMouseOver);
-    stickyElement.current.addEventListener("mouseleave", manageMouseLeave);
+    stickyElement.current.addEventListener("mouseover", manageMouseOverBurger);
+    stickyElement.current.addEventListener(
+      "mouseleave",
+      manageMouseLeaveBurger
+    );
+    titleElement.current.addEventListener("mouseover", manageMouseOverTitle);
+    titleElement.current.addEventListener("mouseleave", manageMouseLeaveTitle);
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
-      stickyElement.current.removeEventListener("mouseover", manageMouseOver);
-      stickyElement.current.removeEventListener("mouseleave", manageMouseLeave);
+      stickyElement.current.removeEventListener(
+        "mouseover",
+        manageMouseOverBurger
+      );
+      stickyElement.current.removeEventListener(
+        "mouseleave",
+        manageMouseLeaveBurger
+      );
+      titleElement.current.removeEventListener(
+        "mouseover",
+        manageMouseOverTitle
+      );
+      titleElement.current.removeEventListener(
+        "mouseleave",
+        manageMouseLeaveTitle
+      );
     };
   });
 
@@ -99,7 +154,7 @@ const StickyCursor = ({ stickyElement }: { stickyElement: any }) => {
   return (
     <motion.div
       transformTemplate={template}
-      className="fixed w-[15px] h-[15px] dark:bg-white bg-black rounded-[50%] pointer-events-none invisible lg:visible"
+      className="fixed w-[15px] h-[15px] dark:bg-white bg-black rounded-[50%] pointer-events-none invisible md:visible"
       ref={cursorRef}
       style={{
         left: smoothMouse.x,
