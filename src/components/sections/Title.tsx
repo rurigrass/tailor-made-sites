@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import Magnetic from "../Magnetic";
 
 interface TitleProps {
   textColour: string;
