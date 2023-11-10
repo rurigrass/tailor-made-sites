@@ -14,7 +14,7 @@ const Header = forwardRef(function index(props, ref: any) {
       rotate: 90,
       transition: { type: "spring", stiffness: 500, damping: 24 },
     },
-    closed: { opacity: 1, transition: { duration: 0.2 } },
+    closed: { opacity: 1, rotate: -90, transition: { duration: 0.2 } },
   };
 
   return (
