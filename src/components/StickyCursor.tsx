@@ -13,9 +13,14 @@ import { useEffect, useRef, useState } from "react";
 interface StickyCursorProps {
   stickyElement: any;
   titleElement: any;
+  primaryColour: string;
 }
 
-const StickyCursor = ({ stickyElement, titleElement }: StickyCursorProps) => {
+const StickyCursor = ({
+  stickyElement,
+  titleElement,
+  primaryColour,
+}: StickyCursorProps) => {
   const [isBurgerHovered, setIsBurgerHovered] = useState<Boolean>(false);
   const [isTitleHovered, setIsTitleHovered] = useState<Boolean>(false);
 
@@ -23,7 +28,7 @@ const StickyCursor = ({ stickyElement, titleElement }: StickyCursorProps) => {
 
   let cursorSize = 20;
   if (isBurgerHovered === true) {
-    cursorSize = 50;
+    cursorSize = 55;
   } else if (isTitleHovered === true) {
     cursorSize = 160;
   } else {
@@ -154,9 +159,11 @@ const StickyCursor = ({ stickyElement, titleElement }: StickyCursorProps) => {
   return (
     <motion.div
       transformTemplate={template}
-      className="fixed w-[15px] h-[15px] dark:bg-white bg-black rounded-[50%] pointer-events-none invisible md:visible"
+      // dark:bg-white bg-black
+      className="fixed w-[15px] h-[15px] rounded-[50%] pointer-events-none invisible md:visible"
       ref={cursorRef}
       style={{
+        backgroundColor: primaryColour,
         left: smoothMouse.x,
         top: smoothMouse.y,
         scaleX: scale.x,

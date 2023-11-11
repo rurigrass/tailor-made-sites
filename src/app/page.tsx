@@ -1,7 +1,7 @@
 "use client";
 
 import BottomBar from "@/components/customiser/BottomBar";
-import Header from "@/components/Header";
+import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
 // import TextWithMask from "@/components/sections/TextWithMask";
 import StickyCursor from "@/components/StickyCursor";
@@ -23,8 +23,13 @@ export default function Home() {
       <StickyCursor
         stickyElement={stickyElement}
         titleElement={titleElements}
+        primaryColour={primaryColour}
       />
-      <Header ref={stickyElement} textColour={textColour} />
+      <Header
+        ref={stickyElement}
+        textColour={textColour}
+        primaryColour={primaryColour}
+      />
       <Title
         textColour={textColour}
         // ref={(el) => (titleElements.current[0] = el)}
