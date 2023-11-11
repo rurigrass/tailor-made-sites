@@ -1,12 +1,13 @@
 "use client";
-interface HeaderProps {}
+interface HeaderProps {
+  textColour: string;
+}
 import { motion } from "framer-motion";
 import { forwardRef, useState } from "react";
 import Magnetic from "./Magnetic";
 
-const Header = forwardRef(function index(props, ref: any) {
+const Header = forwardRef(function index(props: HeaderProps, ref: any) {
   const [isActive, setIsActive] = useState<boolean>(false);
-  console.log(isActive);
 
   const topBar = {
     open: {
@@ -39,18 +40,20 @@ const Header = forwardRef(function index(props, ref: any) {
       <Magnetic>
         <div
           ref={ref}
-          className="relative cursor-pointer flex flex-col gap-[8px] p-[30px]  "
+          className="relative cursor-pointer flex flex-col gap-[8px] p-[30px]"
           onClick={() => setIsActive(!isActive)}
         >
           <motion.div
             variants={topBar}
             animate={isActive ? "open" : "close"}
-            className=" h-[3px] w-[30px] mix-blend-darken bg-white rounded-full"
+            style={{ backgroundColor: props.textColour }}
+            className=" h-[3px] w-[30px] mix-blend-darken  rounded-full"
           ></motion.div>
           <motion.div
             variants={bottomBar}
             animate={isActive ? "open" : "close"}
-            className=" h-[3px] w-[30px] mix-blend-darken bg-white rounded-full"
+            style={{ backgroundColor: props.textColour }}
+            className=" h-[3px] w-[30px] mix-blend-darken  rounded-full"
           ></motion.div>
           {/* not sure why below was here before */}
           {/* <div

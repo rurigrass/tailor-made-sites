@@ -24,7 +24,7 @@ export default function Home() {
         stickyElement={stickyElement}
         titleElement={titleElements}
       />
-      <Header ref={stickyElement} />
+      <Header ref={stickyElement} textColour={textColour} />
       <Title
         textColour={textColour}
         // ref={(el) => (titleElements.current[0] = el)}
