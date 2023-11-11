@@ -7,8 +7,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { forwardRef, useState } from "react";
 import Magnetic from "../Magnetic";
 import Nav from "./Nav";
+import { useColoursStore } from "@/state/colours";
 
 const Header = forwardRef(function index(props: HeaderProps, ref: any) {
+  const { setBackgroundFade } = useColoursStore();
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const topBar = {
@@ -39,12 +41,14 @@ const Header = forwardRef(function index(props: HeaderProps, ref: any) {
 
   return (
     <div>
-      <div className="fixed flex w-full justify-end p-[10px] box-border z-10">
+      <div className="fixed top-0 right-0 flex w-full justify-end p-[10px] box-border z-10">
         <Magnetic>
           <div
             ref={ref}
             className="relative cursor-pointer flex flex-col gap-[8px] p-[30px]"
-            onClick={() => setIsActive(!isActive)}
+            onClick={() => {
+              setIsActive(!isActive), setBackgroundFade(!isActive);
+            }}
           >
             <motion.div
               variants={topBar}

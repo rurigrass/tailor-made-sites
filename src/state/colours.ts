@@ -7,6 +7,8 @@ interface ColoursProps {
   setBackgroundColour: (backgroundColour: string) => void;
   primaryColour: string;
   setPrimaryColour: (backgroundColour: string) => void;
+  backgroundFade: boolean;
+  setBackgroundFade: (backgroundFade: boolean) => void;
 }
 
 export const useColoursStore = create<ColoursProps>()((set) => ({
@@ -16,4 +18,6 @@ export const useColoursStore = create<ColoursProps>()((set) => ({
   setBackgroundColour: (backgroundColour: string) => set({ backgroundColour }),
   primaryColour: "#be8080",
   setPrimaryColour: (primaryColour: string) => set({ primaryColour }),
+  backgroundFade: false,
+  setBackgroundFade: (backgroundFade: boolean) => set({ backgroundFade }),
 }));

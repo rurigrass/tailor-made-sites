@@ -168,6 +168,7 @@ const StickyCursor = ({
         top: smoothMouse.y,
         scaleX: scale.x,
         scaleY: scale.y,
+        mixBlendMode: "difference",
       }}
       animate={{ width: cursorSize, height: cursorSize }}
     ></motion.div>
