@@ -44,7 +44,7 @@ export default function Home() {
         </p>
         <p
           // ref={(el) => (titleElements.current[1] = el)}
-          className="flex justify-center items-center font-bold text-2xl rounded-lg"
+          className="flex justify-center items-center font-bold text-2xl rounded-lg "
           style={{ color: textColour, backgroundColor: primaryColour }}
         >
           POOP

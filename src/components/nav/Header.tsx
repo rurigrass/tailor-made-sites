@@ -50,13 +50,13 @@ const Header = forwardRef(function index(props: HeaderProps, ref: any) {
               variants={topBar}
               animate={isActive ? "open" : "close"}
               style={{ backgroundColor: props.textColour }}
-              className=" h-[3px] w-[30px] mix-blend-darken  rounded-full"
+              className=" h-[3px] w-[30px] rounded-full"
             ></motion.div>
             <motion.div
               variants={bottomBar}
               animate={isActive ? "open" : "close"}
               style={{ backgroundColor: props.textColour }}
-              className=" h-[3px] w-[30px] mix-blend-darken  rounded-full"
+              className=" h-[3px] w-[30px] rounded-full"
             ></motion.div>
             {/* not sure why below was here before */}
             {/* <div
