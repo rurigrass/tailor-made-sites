@@ -3,7 +3,6 @@
 import BottomBar from "@/components/customiser/BottomBar";
 import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
-// import TextWithMask from "@/components/sections/TextWithMask";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
 import { useRef } from "react";
@@ -13,8 +12,7 @@ export default function Home() {
   const { textColour, backgroundColour, primaryColour, backgroundFade } =
     useColoursStore();
   const stickyElement = useRef(null);
-  const titleElements = useRef(null); // Initialize with two elements
-  // const titleElements = useRef([null, null]); // Initialize with two elements
+  const titleElement = useRef(null);
 
   const overlayVariants = {
     open: {
@@ -36,10 +34,10 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[200vh] cursor-default relative  
-        `}
+        className={`h-[200vh] cursor-default`}
         style={{
           backgroundColor: backgroundColour,
+          position: "relative",
         }}
       >
         {/* Dark overlay */}
@@ -49,17 +47,14 @@ export default function Home() {
           animate={backgroundFade ? "open" : "closed"}
           initial={"closed"}
         />
-        {/* <StickyCursor stickyElement={stickyElement} /> */}
+
+        {/* Main content */}
         <StickyCursor
           stickyElement={stickyElement}
-          titleElement={titleElements}
+          titleElement={titleElement}
           primaryColour={primaryColour}
         />
-        <Title
-          textColour={textColour}
-          // ref={(el) => (titleElements.current[0] = el)}
-          ref={titleElements}
-        />
+        <Title textColour={textColour} ref={titleElement} />
         <div className="h-[30vh] lg:h-[40vh] grid grid-cols-2 lg:grid-cols-3 m-4 gap-4 ">
           <p
             className="lg:col-span-2 flex justify-center items-center font-bold text-2xl rounded-lg "
@@ -68,16 +63,15 @@ export default function Home() {
             POOP
           </p>
           <p
-            // ref={(el) => (titleElements.current[1] = el)}
             className="flex justify-center items-center font-bold text-2xl rounded-lg "
             style={{ color: textColour, backgroundColor: primaryColour }}
           >
             POOP
           </p>
         </div>
-        {/* <TextWithMask /> */}
       </motion.main>
 
+      {/* Header and BottomBar components go here */}
       <Header
         ref={stickyElement}
         textColour={textColour}
