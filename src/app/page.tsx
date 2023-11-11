@@ -11,7 +11,8 @@ import { useRef } from "react";
 export default function Home() {
   const { textColour, backgroundColour, primaryColour } = useColoursStore();
   const stickyElement = useRef(null);
-  const titleElements = useRef([null, null]); // Initialize with two elements
+  const titleElements = useRef(null); // Initialize with two elements
+  // const titleElements = useRef([null, null]); // Initialize with two elements
 
   return (
     <main
