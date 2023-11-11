@@ -9,10 +9,9 @@ const Header = forwardRef(function index(props, ref: any) {
   console.log(isActive);
 
   const topBar = {
-    // initial: { opacity: 0 },
     open: {
       rotate: 45,
-      y: 5,
+      y: 5.5,
     },
     close: {
       rotate: 0,
@@ -23,11 +22,9 @@ const Header = forwardRef(function index(props, ref: any) {
   };
 
   const bottomBar = {
-    // initial: { opacity: 0 },
     open: {
-      // transition: { delay: 0.5 },
       rotate: -45,
-      y: -5,
+      y: -5.5,
     },
     close: {
       rotate: 0,
@@ -48,12 +45,12 @@ const Header = forwardRef(function index(props, ref: any) {
           <motion.div
             variants={topBar}
             animate={isActive ? "open" : "close"}
-            className=" h-[2px] w-[30px] mix-blend-difference bg-white"
+            className=" h-[3px] w-[30px] mix-blend-darken bg-white rounded-full"
           ></motion.div>
           <motion.div
             variants={bottomBar}
             animate={isActive ? "open" : "close"}
-            className=" h-[2px] w-[30px] mix-blend-difference bg-white"
+            className=" h-[3px] w-[30px] mix-blend-darken bg-white rounded-full"
           ></motion.div>
           {/* not sure why below was here before */}
           {/* <div

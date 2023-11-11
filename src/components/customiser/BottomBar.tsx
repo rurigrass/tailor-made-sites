@@ -89,7 +89,7 @@ const BottomBar = ({}) => {
         <AnimatePresence>
           {isOpen && (
             <div className="flex gap-1.5 absolute left-1 bottom-1">
-              {colourPickers.map((picker, i) => {
+              {colourPickers.map((picker, i, array) => {
                 return (
                   <motion.div
                     key={i}
@@ -115,7 +115,9 @@ const BottomBar = ({}) => {
                             style={{ backgroundColor: picker.colour }}
                             onClick={() => picker.openHook(!picker.open)}
                           >
+                            {/* <p className={`text-[${array[i + 1].colour}]`}> */}
                             {picker.name}
+                            {/* </p> */}
                           </button>
                         </div>
                       )}
