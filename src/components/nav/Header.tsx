@@ -9,7 +9,7 @@ import Magnetic from "../Magnetic";
 import Nav from "./Nav";
 import { useColoursStore } from "@/state/colours";
 
-const Header = forwardRef(function index(props: HeaderProps, ref: any) {
+const Header = forwardRef(function Header(props: HeaderProps, ref: any) {
   const { setBackgroundFade } = useColoursStore();
   const [isActive, setIsActive] = useState<boolean>(false);
 

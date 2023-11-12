@@ -6,7 +6,7 @@ import Title from "@/components/sections/Title";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const { textColour, backgroundColour, primaryColour, backgroundFade } =
@@ -41,12 +41,17 @@ export default function Home() {
         }}
       >
         {/* Dark overlay */}
-        <motion.div
-          className="absolute inset-0 bg-black"
-          variants={overlayVariants}
-          animate={backgroundFade ? "open" : "closed"}
-          initial={"closed"}
-        />
+        <AnimatePresence mode="wait">
+          {backgroundFade && (
+            <motion.div
+              className="absolute inset-0 bg-black"
+              variants={overlayVariants}
+              animate={backgroundFade ? "open" : "closed"}
+              exit={backgroundFade ? "closed" : "open"}
+              initial={"closed"}
+            />
+          )}
+        </AnimatePresence>
 
         {/* Main content */}
         <StickyCursor
