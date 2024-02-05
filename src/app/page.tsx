@@ -7,6 +7,7 @@ import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
 import { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Canvas from "@/components/canvas/Canvas";
 
 export default function Home() {
   const { textColour, backgroundColour, primaryColour, backgroundFade } =
@@ -34,12 +35,14 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[200vh] cursor-default`}
+        className={`h-[100vh] cursor-default`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
         }}
       >
+        <Canvas />
+        <Title textColour={textColour} ref={titleElement} />
         {/* Dark overlay */}
         <AnimatePresence mode="wait">
           {backgroundFade && (
@@ -59,21 +62,6 @@ export default function Home() {
           titleElement={titleElement}
           primaryColour={primaryColour}
         />
-        <Title textColour={textColour} ref={titleElement} />
-        <div className="h-[30vh] lg:h-[40vh] grid grid-cols-2 lg:grid-cols-3 m-4 gap-4 ">
-          <p
-            className="lg:col-span-2 flex justify-center items-center font-bold text-2xl rounded-lg "
-            style={{ color: textColour, backgroundColor: primaryColour }}
-          >
-            POOP
-          </p>
-          <p
-            className="flex justify-center items-center font-bold text-2xl rounded-lg "
-            style={{ color: textColour, backgroundColor: primaryColour }}
-          >
-            POOP
-          </p>
-        </div>
       </motion.main>
 
       {/* Header and BottomBar components go here */}

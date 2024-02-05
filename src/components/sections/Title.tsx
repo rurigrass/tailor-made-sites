@@ -7,8 +7,8 @@ interface TitleProps {
 
 const Title = forwardRef(function index({ textColour }: TitleProps, ref: any) {
   return (
-    <div className="flex flex-col items-center justify-center h-[50vh]">
-      <div ref={ref} className="inline-block">
+    <div className="flex flex-col items-center justify-center h-[90vh]">
+      <div ref={ref} className="inline-block absolute">
         <div
           className="flex flex-wrap justify-center font-extrabold text-6xl"
           style={{ color: textColour }}
