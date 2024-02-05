@@ -23,8 +23,8 @@ const StickyCursor = ({
 }: StickyCursorProps) => {
   const [isBurgerHovered, setIsBurgerHovered] = useState<Boolean>(false);
   const [isTitleHovered, setIsTitleHovered] = useState<Boolean>(false);
-  console.log("title hover ", isTitleHovered);
-  console.log("burger hover ", isBurgerHovered);
+  // console.log("title hover ", isTitleHovered);
+  // console.log("burger hover ", isBurgerHovered);
 
   const cursorRef = useRef(null);
 

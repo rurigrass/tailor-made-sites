@@ -41,13 +41,13 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[100vh] cursor-default`}
+        className={`h-[calc(100dvh)] mx-auto cursor-default`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
         }}
       >
-        <Canvas updateCounter={updateCounter} />
+        <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
         <Title textColour={textColour} ref={titleElement} />
         {/* Dark overlay */}
         <AnimatePresence mode="wait">
