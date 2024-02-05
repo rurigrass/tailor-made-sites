@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] mx-auto cursor-default overscroll-contain`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
