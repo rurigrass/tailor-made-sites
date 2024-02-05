@@ -5,7 +5,7 @@ import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Canvas from "@/components/canvas/Canvas";
 
@@ -14,6 +14,12 @@ export default function Home() {
     useColoursStore();
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
+  const [counter, setCounter] = useState<number>(0);
+  console.log(counter);
+
+  const updateCounter = (value: number) => {
+    setCounter((prevCounter) => prevCounter + value);
+  };
 
   const overlayVariants = {
     open: {
@@ -41,7 +47,7 @@ export default function Home() {
           position: "relative",
         }}
       >
-        <Canvas />
+        <Canvas updateCounter={updateCounter} />
         <Title textColour={textColour} ref={titleElement} />
         {/* Dark overlay */}
         <AnimatePresence mode="wait">

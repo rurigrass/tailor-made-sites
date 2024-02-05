@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-type CanvasProps = {};
+type CanvasProps = {
+  updateCounter: (value: number) => void;
+};
 
-const Canvas = (props: CanvasProps) => {
-  const [counter, setCounter] = useState<number>(0);
+const Canvas = ({ updateCounter, ...rest }: CanvasProps) => {
+  // const [counter, setCounter] = useState<number>(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -36,11 +38,13 @@ const Canvas = (props: CanvasProps) => {
 
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
-        setCounter((prevCounter) => prevCounter + 1);
+        // setCounter((prevCounter) => prevCounter + 1);
+        updateCounter(1);
       }
       if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
         dy = -dy;
-        setCounter((prevCounter) => prevCounter + 1);
+        // setCounter((prevCounter) => prevCounter + 1);
+        updateCounter(1);
       }
 
       x += dx;
@@ -53,11 +57,10 @@ const Canvas = (props: CanvasProps) => {
       clearInterval(intervalId);
     };
   }, []);
-  console.log(counter);
 
   return (
     <div className="absolute">
-      <canvas ref={canvasRef} {...props} width="500" height="500" />
+      <canvas ref={canvasRef} {...rest} width="500" height="500" />
     </div>
   );
 };
