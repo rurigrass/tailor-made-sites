@@ -41,10 +41,10 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] mx-auto cursor-default`}
+        className={`h-[calc(100dvh)] mx-auto cursor-default overscroll-contain`}
         style={{
           backgroundColor: backgroundColour,
-          // position: "relative",
+          position: "relative",
         }}
       >
         <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
