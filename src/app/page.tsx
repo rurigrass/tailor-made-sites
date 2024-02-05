@@ -44,7 +44,7 @@ export default function Home() {
         className={`h-[calc(100dvh)] mx-auto cursor-default`}
         style={{
           backgroundColor: backgroundColour,
-          position: "relative",
+          // position: "relative",
         }}
       >
         <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
