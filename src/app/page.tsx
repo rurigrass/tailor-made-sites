@@ -15,7 +15,7 @@ export default function Home() {
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
   const [counter, setCounter] = useState<number>(0);
-  console.log(counter);
+  // console.log(counter);
 
   const updateCounter = (value: number) => {
     setCounter((prevCounter) => prevCounter + value);

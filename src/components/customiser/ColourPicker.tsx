@@ -1,12 +1,14 @@
 import { SketchPicker } from "react-color";
+import OutsideAlerter from "../helpers/OutsideAlerter";
 // import { useColoursStore } from "../../state/colours";
 
 interface ColourPickerProps {
   colour: string;
   changeColour: (colour: string) => void;
+  close: any;
 }
 
-const ColourPicker = ({ colour, changeColour }: ColourPickerProps) => {
+const ColourPicker = ({ colour, changeColour, close }: ColourPickerProps) => {
   //THIS IS TO BLOCK AN ERROR
   const error = console.error;
   console.error = (...args: any) => {
@@ -14,16 +16,22 @@ const ColourPicker = ({ colour, changeColour }: ColourPickerProps) => {
     error(...args);
   };
 
+  const outsideClicked = () => {
+    close();
+  };
+
   return (
     <div className="absolute bottom-[70px]">
-      <SketchPicker
-        disableAlpha
-        presetColors={[]}
-        color={colour}
-        onChange={(colour) => {
-          changeColour(colour.hex);
-        }}
-      />
+      <OutsideAlerter onClickOutside={outsideClicked}>
+        <SketchPicker
+          disableAlpha
+          presetColors={[]}
+          color={colour}
+          onChange={(colour) => {
+            changeColour(colour.hex);
+          }}
+        />
+      </OutsideAlerter>
     </div>
   );
 };
