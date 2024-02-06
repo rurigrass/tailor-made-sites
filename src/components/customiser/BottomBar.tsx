@@ -109,8 +109,7 @@ const BottomBar = ({}) => {
                             style={{ backgroundColor: picker.colour }}
                             disabled={picker.open}
                             onClick={() =>
-                              !picker.open &&
-                              setTimeout(() => picker.openHook(true), 500)
+                              !picker.open && picker.openHook(true)
                             }
                           >
                             {/* <p className={`text-[${array[i + 1].colour}]`}> */}
