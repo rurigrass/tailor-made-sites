@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain adventPro`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
@@ -81,15 +81,15 @@ export default function Home() {
           titleElement={titleElement}
           primaryColour={primaryColour}
         />
-      </motion.main>
 
-      {/* Header and BottomBar components go here */}
-      <Header
-        ref={stickyElement}
-        textColour={textColour}
-        primaryColour={primaryColour}
-      />
-      <BottomBar />
+        {/* Header and BottomBar components go here */}
+        <Header
+          ref={stickyElement}
+          textColour={textColour}
+          primaryColour={primaryColour}
+        />
+        <BottomBar />
+      </motion.main>
     </>
   );
 }
