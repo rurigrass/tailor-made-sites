@@ -64,7 +64,7 @@ const BottomBar = ({}) => {
     },
   ];
 
-  console.log(colourPickers[0].open);
+  console.log("swag ", colourPickers[0].open);
 
   const perspective = {
     initial: { opacity: 0 },
@@ -104,18 +104,20 @@ const BottomBar = ({}) => {
                     <AnimatePresence>
                       {isOpen && (
                         <div>
-                          <button
-                            className="p-3 rounded-lg hover:cursor-pointer"
+                          <div
+                            className={`p-3 rounded-lg hover:cursor-pointer ${
+                              picker.open && "pointer-events-none"
+                            }`}
                             style={{ backgroundColor: picker.colour }}
-                            disabled={picker.open}
+                            // disabled={picker.open}
                             onClick={() =>
-                              !picker.open && picker.openHook(true)
+                              !picker.open && picker.openHook(!picker.open)
                             }
                           >
                             {/* <p className={`text-[${array[i + 1].colour}]`}> */}
                             {picker.name}
                             {/* </p> */}
-                          </button>
+                          </div>
                           {picker.open && (
                             <ColourPicker
                               colour={picker.colour}
