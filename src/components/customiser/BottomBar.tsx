@@ -64,8 +64,6 @@ const BottomBar = ({}) => {
     },
   ];
 
-  console.log("swag ", colourPickers[0].open);
-
   const perspective = {
     initial: { opacity: 0 },
     enter: (i: number) => ({

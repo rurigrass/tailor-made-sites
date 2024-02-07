@@ -5,17 +5,30 @@ import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Canvas from "@/components/canvas/Canvas";
 
 export default function Home() {
-  const { textColour, backgroundColour, primaryColour, backgroundFade } =
-    useColoursStore();
+  const {
+    setTextColour,
+    textColour,
+    setBackgroundColour,
+    backgroundColour,
+    setPrimaryColour,
+    primaryColour,
+    backgroundFade,
+  } = useColoursStore();
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
   const [counter, setCounter] = useState<number>(0);
   // console.log(counter);
+
+  useEffect(() => {
+    setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+    setBackgroundColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+    setPrimaryColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+  }, [counter]);
 
   const updateCounter = (value: number) => {
     setCounter((prevCounter) => prevCounter + value);
