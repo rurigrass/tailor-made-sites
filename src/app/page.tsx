@@ -5,11 +5,29 @@ import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
 import StickyCursor from "@/components/StickyCursor";
 import { useColoursStore } from "@/state/colours";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Canvas from "@/components/canvas/Canvas";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
-export default function Home() {
+type HomeProps = {
+  params: {
+    fonts: string[];
+  };
+};
+
+export default function Home(props: HomeProps) {
+  const { data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      axios
+        .get("https://api.github.com/repos/tannerlinsley/react-query")
+        .then((res) => res.data),
+  });
+
+  console.log(data);
+
   const {
     setTextColour,
     textColour,
@@ -22,7 +40,9 @@ export default function Home() {
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
   const [counter, setCounter] = useState<number>(0);
-  // console.log(counter);
+
+  const { fonts } = props.params;
+  console.log("DAWAT ", fonts);
 
   useEffect(() => {
     setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
@@ -31,7 +51,7 @@ export default function Home() {
   }, [counter]);
 
   const updateCounter = (value: number) => {
-    setCounter((prevCounter) => prevCounter + value);
+    // setCounter((prevCounter) => prevCounter + value);
   };
 
   const overlayVariants = {
@@ -54,7 +74,7 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain adventPro`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain roboto`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",

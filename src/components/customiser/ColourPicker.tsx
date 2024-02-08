@@ -1,5 +1,5 @@
 import { SketchPicker } from "react-color";
-import OutsideAlerter from "../helpers/OutsideAlerter";
+import OutsideAlerter from "../lib/OutsideAlerter";
 // import { useColoursStore } from "../../state/colours";
 
 interface ColourPickerProps {

@@ -107,7 +107,6 @@ const BottomBar = ({}) => {
                               picker.open && "pointer-events-none"
                             }`}
                             style={{ backgroundColor: picker.colour }}
-                            // disabled={picker.open}
                             onClick={() =>
                               !picker.open && picker.openHook(!picker.open)
                             }
