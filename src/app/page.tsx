@@ -11,6 +11,7 @@ import Canvas from "@/components/canvas/Canvas";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
+import { useFontsStore } from "@/state/fonts";
 
 type HomeProps = {
   params: {
@@ -19,11 +20,6 @@ type HomeProps = {
 };
 
 export default function Home(props: HomeProps) {
-  // const { data, isLoading: fontsLoading } = useGoogleFonts();
-
-  // console.log(fontsLoading);
-  // console.log(data);
-
   const {
     setTextColour,
     textColour,
@@ -33,21 +29,22 @@ export default function Home(props: HomeProps) {
     primaryColour,
     backgroundFade,
   } = useColoursStore();
+  const { mainFont, setMainFont } = useFontsStore();
+  const { fonts } = props.params;
+
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
   const [counter, setCounter] = useState<number>(0);
-
-  const { fonts } = props.params;
-  console.log("DAWAT ", fonts);
 
   useEffect(() => {
     setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
     setBackgroundColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
     setPrimaryColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+    setMainFont(fonts[Math.floor(Math.random() * fonts.length)]);
   }, [counter]);
 
   const updateCounter = (value: number) => {
-    // setCounter((prevCounter) => prevCounter + value);
+    setCounter((prevCounter) => prevCounter + value);
   };
 
   const overlayVariants = {
@@ -70,7 +67,7 @@ export default function Home(props: HomeProps) {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain cinzelDecorative`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain ${mainFont}`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",

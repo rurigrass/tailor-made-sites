@@ -15,8 +15,6 @@ type RootLayoutProps = {
   };
 };
 
-console.log(fonts);
-
 export default function RootLayout(props: RootLayoutProps) {
   props.params.fonts = [
     "adventPro",
