@@ -1,4 +1,16 @@
-import { Advent_Pro, Capriola, Roboto } from "next/font/google";
+import {
+  Advent_Pro,
+  Capriola,
+  Krona_One,
+  Syne,
+  Roboto,
+} from "next/font/google";
+
+export const adventPro = Advent_Pro({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-advent-pro",
+});
 
 export const capriola = Capriola({
   subsets: ["latin"],
@@ -6,13 +18,22 @@ export const capriola = Capriola({
   variable: "--font-capriola",
 });
 
-export const adventPro = Advent_Pro({
+//doesnt work
+export const kronaOne = Krona_One({
   subsets: ["latin"],
-  variable: "--font-advent-pro",
+  weight: "400",
+  variable: "--font-krona-one",
 });
 
 export const roboto = Roboto({
   subsets: ["latin"],
-  weight: "900",
+  weight: "400",
   variable: "--font-roboto",
+});
+
+//doesnt work
+export const syne = Syne({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-syne",
 });

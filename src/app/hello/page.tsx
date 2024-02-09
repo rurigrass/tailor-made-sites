@@ -1,20 +1,29 @@
 "use client";
-import { getGoogleFonts } from "@/components/lib/hooks/getGoogleFonts";
+
+import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
 
 export default function Page() {
-  // const { data } = useQuery({
-  //   queryKey: ["repoData"],
-  //   queryFn: () =>
-  //     axios
-  //       .get("https://api.github.com/repos/tannerlinsley/react-query")
-  //       .then((res) => res.data),
-  // });
+  const { data: fonts, isLoading: fontsLoading } = useGoogleFonts();
 
-  const { isLoading, data } = getGoogleFonts();
+  let dafont;
 
-  console.log("loading..", isLoading);
+  if (fonts) {
+    dafont = fonts[230];
+    console.log(dafont.family);
+  }
 
-  console.log(data);
-
-  return <div>hello</div>;
+  return (
+    <>
+      {dafont !== undefined ? (
+        <div
+          className={`butterflyKids`}
+          // style={{ fontFamily: dafont ? dafont.family : "capriola" }}
+        >
+          <p>This is a sample paragraph with the selected font.</p>
+        </div>
+      ) : (
+        <div className="">Loading...</div>
+      )}
+    </>
+  );
 }

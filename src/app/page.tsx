@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Canvas from "@/components/canvas/Canvas";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
 
 type HomeProps = {
   params: {
@@ -18,15 +19,10 @@ type HomeProps = {
 };
 
 export default function Home(props: HomeProps) {
-  const { data } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () =>
-      axios
-        .get("https://api.github.com/repos/tannerlinsley/react-query")
-        .then((res) => res.data),
-  });
+  // const { data, isLoading: fontsLoading } = useGoogleFonts();
 
-  console.log(data);
+  // console.log(fontsLoading);
+  // console.log(data);
 
   const {
     setTextColour,
@@ -74,12 +70,13 @@ export default function Home(props: HomeProps) {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain roboto`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain kronaOne`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
         }}
       >
+        {" "}
         <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
         <Title textColour={textColour} ref={titleElement} />
         {/* Dark overlay */}
@@ -94,14 +91,12 @@ export default function Home(props: HomeProps) {
             />
           )}
         </AnimatePresence>
-
         {/* Main content */}
         <StickyCursor
           stickyElement={stickyElement}
           titleElement={titleElement}
           primaryColour={primaryColour}
         />
-
         {/* Header and BottomBar components go here */}
         <Header
           ref={stickyElement}

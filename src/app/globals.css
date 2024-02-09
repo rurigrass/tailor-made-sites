@@ -2,14 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.capriola {
-  font-family: var(--font-capriola);
-}
-
 .adventPro {
   font-family: var(--font-advent-pro);
 }
 
+.capriola {
+  font-family: var(--font-capriola);
+}
+
+.kronaOne {
+  font-family: var(--font-krona-one);
+}
+
 .roboto {
   font-family: var(--font-roboto);
+}
+
+.syne {
+  font-family: var(--font-syne);
 }

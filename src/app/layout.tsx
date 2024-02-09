@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Advent_Pro, Roboto } from "next/font/google";
-import { adventPro, capriola, roboto } from "@/utils/fonts";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import * as fonts from "@/utils/fonts";
 import { Provider } from "@/components/lib/Provider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tailor Made Sites",
@@ -19,15 +15,16 @@ type RootLayoutProps = {
   };
 };
 
+console.log(fonts);
+
 export default function RootLayout(props: RootLayoutProps) {
-  props.params.fonts = ["capriola", "adventPro"];
+  props.params.fonts = ["adventPro", "capriola", "kronaOne", "roboto", "syne"];
   return (
     <html
       lang="en"
-      className={`${capriola.variable} ${adventPro.variable} ${roboto.variable}`}
-      data-fonts={["capriola", "adventPro"]}
+      className={`${fonts.adventPro.variable} ${fonts.capriola.variable}  ${fonts.kronaOne.variable} ${fonts.roboto.variable} ${fonts.syne.variable}`}
     >
-      <body className={inter.className}>
+      <body>
         <Provider>{props.children}</Provider>
       </body>
     </html>
