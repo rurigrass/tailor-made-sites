@@ -18,11 +18,24 @@ type RootLayoutProps = {
 console.log(fonts);
 
 export default function RootLayout(props: RootLayoutProps) {
-  props.params.fonts = ["adventPro", "capriola", "kronaOne", "roboto", "syne"];
+  props.params.fonts = [
+    "adventPro",
+    "belleza",
+    "capriola",
+    "caudex",
+    "cinzelDecorative",
+    "dmSans",
+    "federo",
+    "kronaOne",
+    "roboto",
+    "spaceGrotesk",
+    "syne",
+    "italiana",
+  ];
   return (
     <html
       lang="en"
-      className={`${fonts.adventPro.variable} ${fonts.capriola.variable}  ${fonts.kronaOne.variable} ${fonts.roboto.variable} ${fonts.syne.variable}`}
+      className={`${fonts.adventPro.variable} ${fonts.belleza.variable} ${fonts.capriola.variable} ${fonts.caudex.variable} ${fonts.cinzelDecorative.variable} ${fonts.dmSans.variable} ${fonts.federo.variable} ${fonts.kronaOne.variable} ${fonts.roboto.variable} ${fonts.spaceGrotesk.variable} ${fonts.syne.variable} ${fonts.italiana.variable}`}
     >
       <body>
         <Provider>{props.children}</Provider>

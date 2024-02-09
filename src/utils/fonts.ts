@@ -1,9 +1,16 @@
 import {
   Advent_Pro,
+  Belleza,
   Capriola,
+  Caudex,
+  Cinzel_Decorative,
+  DM_Sans,
+  Federo,
   Krona_One,
-  Syne,
   Roboto,
+  Space_Grotesk,
+  Syne,
+  Italiana,
 } from "next/font/google";
 
 export const adventPro = Advent_Pro({
@@ -12,13 +19,42 @@ export const adventPro = Advent_Pro({
   variable: "--font-advent-pro",
 });
 
+export const belleza = Belleza({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-belleza",
+});
+
 export const capriola = Capriola({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-capriola",
 });
 
-//doesnt work
+export const cinzelDecorative = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-cinzel-decorative",
+});
+
+export const caudex = Caudex({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-caudex",
+});
+
+export const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-dm-sans",
+});
+
+export const federo = Federo({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-federo",
+});
+
 export const kronaOne = Krona_One({
   subsets: ["latin"],
   weight: "400",
@@ -31,9 +67,20 @@ export const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-//doesnt work
+export const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-space-grotesk",
+});
+
 export const syne = Syne({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-syne",
+});
+
+export const italiana = Italiana({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-italiana",
 });

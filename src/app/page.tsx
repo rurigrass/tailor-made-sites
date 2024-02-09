@@ -70,7 +70,7 @@ export default function Home(props: HomeProps) {
   return (
     <>
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain kronaOne`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain cinzelDecorative`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
