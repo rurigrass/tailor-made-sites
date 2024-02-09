@@ -46,10 +46,10 @@ const Nav = ({ primaryColour }: NavProps) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-[100vh] fixed top-0 right-0"
+      className="h-[100vh] w-full md:w-[500px] fixed top-0 right-0"
       style={{ backgroundColor: primaryColour }}
     >
-      <div className=" box-border h-full p-[100px] flex flex-col justify-between">
+      <div className=" box-border h-full pl-[50px] py-[100px] flex flex-col justify-between">
         <div
           onMouseLeave={() => {
             setSelectedIndicator(pathname);
@@ -69,7 +69,7 @@ const Nav = ({ primaryColour }: NavProps) => {
           })}
         </div>
 
-        <div className="flex w-full justify-between text-[12px] gap-[40px]">
+        <div className="flex w-full justify-between text-[12px] gap-[40px] pr-[50px]">
           <a>Awwwards</a>
 
           <a>Instagram</a>
