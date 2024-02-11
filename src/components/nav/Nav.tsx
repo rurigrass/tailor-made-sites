@@ -39,7 +39,7 @@ const Nav = ({ primaryColour }: NavProps) => {
   const pathname = usePathname();
 
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
-  //What is selected indicator?
+  //What is selected indicator? -> yes check
 
   return (
     <motion.div
