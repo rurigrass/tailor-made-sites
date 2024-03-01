@@ -3,7 +3,7 @@
 import BottomBar from "@/components/customiser/BottomBar";
 import Header from "@/components/nav/Header";
 import Title from "@/components/sections/Title";
-import StickyCursor from "@/components/StickyCursor";
+import StickyCursor from "@/components/lib/StickyCursor";
 import { useColoursStore } from "@/state/colours";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,6 +12,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
 import { useFontsStore } from "@/state/fonts";
+import Play from "@/components/sections/Play";
 
 type HomeProps = {
   params: {
@@ -44,7 +45,7 @@ export default function Home(props: HomeProps) {
   }, [counter]);
 
   const updateCounter = (value: number) => {
-    setCounter((prevCounter) => prevCounter + value);
+    // setCounter((prevCounter) => prevCounter + value);
   };
 
   const overlayVariants = {
@@ -74,8 +75,9 @@ export default function Home(props: HomeProps) {
         }}
       >
         {" "}
-        <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
+        {/* <Canvas updateCounter={updateCounter} ballColour={primaryColour} /> */}
         <Title textColour={textColour} ref={titleElement} />
+        {/* <Play /> */}
         {/* Dark overlay */}
         <AnimatePresence mode="wait">
           {backgroundFade && (

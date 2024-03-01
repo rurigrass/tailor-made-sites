@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
-import Magnetic from "../Magnetic";
+import Magnetic from "../lib/Magnetic";
+import Play from "./Play";
 
 interface TitleProps {
   textColour: string;
@@ -26,6 +27,7 @@ const Title = forwardRef(function index({ textColour }: TitleProps, ref: any) {
           a site to suit you
         </p>
       </div>
+      <Play />
     </div>
   );
 });

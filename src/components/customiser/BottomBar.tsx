@@ -5,7 +5,7 @@ import ColourPicker from "./ColourPicker";
 import { useColoursStore } from "../../state/colours";
 import CustomiserButton from "./CustomiserButton";
 import { AnimatePresence, motion } from "framer-motion";
-import Magnetic from "../Magnetic";
+import Magnetic from "../lib/Magnetic";
 
 interface BottomBarProps {}
 

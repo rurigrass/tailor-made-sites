@@ -5,7 +5,7 @@ interface HeaderProps {
 }
 import { AnimatePresence, motion } from "framer-motion";
 import { forwardRef, useState } from "react";
-import Magnetic from "../Magnetic";
+import Magnetic from "../lib/Magnetic";
 import Nav from "./Nav";
 import { useColoursStore } from "@/state/colours";
 
