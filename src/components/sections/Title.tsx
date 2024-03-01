@@ -26,8 +26,10 @@ const Title = forwardRef(function index({ textColour }: TitleProps, ref: any) {
         >
           a site to suit you
         </p>
+        <div className="flex justify-center mt-5">
+          <Play />
+        </div>
       </div>
-      <Play />
     </div>
   );
 });
