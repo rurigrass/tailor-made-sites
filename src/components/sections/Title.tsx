@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import Magnetic from "../lib/Magnetic";
+// import Magnetic from "../lib/Magnetic";
 import Play from "./Play";
 
 interface TitleProps {
