@@ -36,6 +36,7 @@ export default function Home(props: HomeProps) {
   const stickyElement = useRef(null);
   const titleElement = useRef(null);
   const [counter, setCounter] = useState<number>(0);
+  const [play, setPlay] = useState<boolean>(true);
 
   useEffect(() => {
     setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
