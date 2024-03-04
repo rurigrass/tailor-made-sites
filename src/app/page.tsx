@@ -39,10 +39,12 @@ export default function Home(props: HomeProps) {
   const [play, setPlay] = useState<boolean>(true);
 
   useEffect(() => {
-    setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
-    setBackgroundColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
-    setPrimaryColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
-    setMainFont(fonts[Math.floor(Math.random() * fonts.length)]);
+    if (play === true) {
+      setTextColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+      setBackgroundColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+      setPrimaryColour(`hsl(${Math.random() * 360}, 100%, 66%)`);
+      setMainFont(fonts[Math.floor(Math.random() * fonts.length)]);
+    }
   }, [counter]);
 
   const updateCounter = (value: number) => {
