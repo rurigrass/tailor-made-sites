@@ -78,7 +78,11 @@ export default function Home(props: HomeProps) {
         }}
       >
         {" "}
-        <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
+        <Canvas
+          updateCounter={updateCounter}
+          ballColour={primaryColour}
+          play={play}
+        />
         <div className="flex flex-col items-center justify-center h-[90vh] w-full gap-6 absolute">
           <Title textColour={textColour} ref={titleElement} />
           <Play triggerBall={() => setPlay(!play)} play={play} />

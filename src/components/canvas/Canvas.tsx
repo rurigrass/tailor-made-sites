@@ -3,9 +3,10 @@ import { useEffect, useRef } from "react";
 type CanvasProps = {
   updateCounter: (value: number) => void;
   ballColour: string;
+  play: boolean;
 };
 
-const Canvas = ({ updateCounter, ballColour, ...rest }: CanvasProps) => {
+const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ballColourRef = useRef<string>(ballColour);
 
@@ -17,14 +18,22 @@ const Canvas = ({ updateCounter, ballColour, ...rest }: CanvasProps) => {
   ) => {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+
     ctx.fillStyle = ballColourRef.current;
     ctx.fill();
     ctx.closePath();
+    // console.log(play);
   };
 
   useEffect(() => {
-    ballColourRef.current = ballColour;
-  }, [ballColour]);
+    console.log(ballColour);
+
+    play
+      ? (ballColourRef.current = ballColour)
+      : (ballColourRef.current = "rgba(0,0,0,0.5)");
+  }, [ballColour, play]);
+
+  //do a ballSizeRef
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -44,6 +53,8 @@ const Canvas = ({ updateCounter, ballColour, ...rest }: CanvasProps) => {
       canvas.height = window.innerHeight;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // if (play) {
       drawBall(ctx, ballRadius, x, y);
 
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -57,6 +68,7 @@ const Canvas = ({ updateCounter, ballColour, ...rest }: CanvasProps) => {
 
       x += dx;
       y += dy;
+      // }
     };
 
     const intervalId = setInterval(draw, 10);
