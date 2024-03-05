@@ -8,15 +8,20 @@ import {
 import SVGMorph from "../lib/SVGMorph";
 import { useState } from "react";
 
-const Play = () => {
-  const [play, setPlay] = useState(true);
+type PlayProps = {
+  triggerBall: () => void;
+  play: boolean;
+};
+
+const Play = ({ triggerBall, play }: PlayProps) => {
+  // const [play, setPlay] = useState(true);
   return (
-    <div className="w-10 ">
+    <div className="w-10">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 144 178"
         className=" hover:cursor-pointer"
-        onClick={() => setPlay(!play)}
+        onClick={() => triggerBall()}
       >
         <SVGMorph paths={[shape1, shape1_morphed, shape1]} play={play} />
         <SVGMorph paths={[shape2, shape2_morphed, shape2]} play={play} />

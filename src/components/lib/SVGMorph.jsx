@@ -14,7 +14,7 @@ export default function SVGMorph({ paths, play }) {
 
   useEffect(() => {
     const animation = animate(progress, pathIndex, {
-      duration: 0.4,
+      duration: 0.1,
       ease: "easeInOut",
       //   delay: 0,
 

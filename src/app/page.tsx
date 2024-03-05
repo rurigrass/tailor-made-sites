@@ -48,7 +48,7 @@ export default function Home(props: HomeProps) {
   }, [counter]);
 
   const updateCounter = (value: number) => {
-    // setCounter((prevCounter) => prevCounter + value);
+    setCounter((prevCounter) => prevCounter + value);
   };
 
   const overlayVariants = {
@@ -78,9 +78,11 @@ export default function Home(props: HomeProps) {
         }}
       >
         {" "}
-        {/* <Canvas updateCounter={updateCounter} ballColour={primaryColour} /> */}
-        <Title textColour={textColour} ref={titleElement} />
-        {/* <Play /> */}
+        <Canvas updateCounter={updateCounter} ballColour={primaryColour} />
+        <div className="flex flex-col items-center justify-center h-[90vh] w-full gap-6 absolute">
+          <Title textColour={textColour} ref={titleElement} />
+          <Play triggerBall={() => setPlay(!play)} play={play} />
+        </div>
         {/* Dark overlay */}
         <AnimatePresence mode="wait">
           {backgroundFade && (
