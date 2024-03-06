@@ -27,6 +27,7 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
 
   useEffect(() => {
     console.log(ballColour);
+    // find transparent colour
 
     play
       ? (ballColourRef.current = ballColour)
