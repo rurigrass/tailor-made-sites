@@ -31,7 +31,7 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
 
     play
       ? (ballColourRef.current = ballColour)
-      : (ballColourRef.current = "rgba(0,0,0,0.5)");
+      : (ballColourRef.current = "rgba(0,0,0,0)");
   }, [ballColour, play]);
 
   //do a ballSizeRef
