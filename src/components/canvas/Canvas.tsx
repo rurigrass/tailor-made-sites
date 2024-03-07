@@ -18,7 +18,6 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
   ) => {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-
     ctx.fillStyle = ballColourRef.current;
     ctx.fill();
     ctx.closePath();
@@ -26,12 +25,18 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
   };
 
   useEffect(() => {
-    console.log(ballColour);
-    // find transparent colour
+    const timer = setTimeout(() => {
+      // console.log(ballColour);
+      // find transparent colour
+      console.log(ballColourRef);
 
-    play
-      ? (ballColourRef.current = ballColour)
-      : (ballColourRef.current = "rgba(0,0,0,0)");
+      play
+        ? (ballColourRef.current = ballColour)
+        : // : (ballColourRef.current = "rgba(0,0,0,0)");
+          (ballColourRef.current = "hsla(0, 0%, 0%, 0)");
+    }, 300); // 300 milliseconds = 0.3 seconds
+
+    return () => clearTimeout(timer);
   }, [ballColour, play]);
 
   //do a ballSizeRef
