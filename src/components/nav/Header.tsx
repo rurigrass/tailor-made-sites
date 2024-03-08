@@ -45,7 +45,7 @@ const Header = forwardRef(function Header(props: HeaderProps, ref: any) {
         <Magnetic>
           <div
             ref={ref}
-            className="relative cursor-pointer flex flex-col gap-[8px] p-[30px]"
+            className="relative cursor-pointer flex flex-col gap-[8px] p-[30px] no_highlights"
             onClick={() => {
               setIsActive(!isActive), setBackgroundFade(!isActive);
             }}
