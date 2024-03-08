@@ -71,7 +71,7 @@ const Nav = ({ primaryColour }: NavProps) => {
         </div>
 
         <div className="flex w-full justify-between text-[12px] gap-[40px] pr-[50px]">
-          <a>Awwwards</a>
+          <a>Github</a>
 
           <a>Instagram</a>
 
