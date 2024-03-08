@@ -19,12 +19,12 @@ const Title = forwardRef(function index({ textColour }: TitleProps, ref: any) {
         <p className="hidden sm:block">&nbsp;</p>
         <p>Sites</p>
       </div>
-      <p
+      {/* <p
         className="flex justify-center md:justify-start mt-4 md:mt-0 font-bold text-2xl"
         style={{ color: textColour }}
       >
         a site to suit you
-      </p>
+      </p> */}
     </div>
   );
 });

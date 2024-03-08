@@ -16,7 +16,7 @@ type PlayProps = {
 const Play = ({ triggerBall, play }: PlayProps) => {
   // const [play, setPlay] = useState(true);
   return (
-    <div className="w-10">
+    <div className="w-10 ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 144 178"

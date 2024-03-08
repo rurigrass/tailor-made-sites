@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
 import { useFontsStore } from "@/state/fonts";
 import Play from "@/components/sections/Play";
+import CurlyText from "@/components/sections/CurlyText";
 
 type HomeProps = {
   params: {
@@ -84,9 +85,12 @@ export default function Home(props: HomeProps) {
           ballColour={primaryColour}
           play={play}
         />
-        <div className="flex flex-col items-center justify-center h-[90vh] w-full gap-6 absolute">
+        <div className="flex flex-col items-center justify-center h-[90vh] w-full gap-10 absolute">
           <Title textColour={textColour} ref={titleElement} />
-          <Play triggerBall={() => setPlay(!play)} play={play} />
+          <CurlyText textColour={textColour} />
+          <div className="absolute bottom-72">
+            <Play triggerBall={() => setPlay(!play)} play={play} />
+          </div>
         </div>
         {/* Dark overlay */}
         <AnimatePresence mode="wait">
