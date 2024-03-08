@@ -85,11 +85,15 @@ export default function Home(props: HomeProps) {
           ballColour={primaryColour}
           play={play}
         />
-        <div className="flex flex-col items-center justify-center h-[90vh] w-full gap-10 absolute">
-          <Title textColour={textColour} ref={titleElement} />
-          <CurlyText textColour={textColour} />
-          <div className="absolute bottom-72">
+        <div className="flex flex-col items-center justify-center h-[90vh] w-full absolute">
+          <div className="mb-10">
+            <Title textColour={textColour} ref={titleElement} />
+          </div>
+          <div className="absolute bottom-64">
             <Play triggerBall={() => setPlay(!play)} play={play} />
+          </div>
+          <div className="w-full mt-20">
+            <CurlyText textColour={textColour} />
           </div>
         </div>
         {/* Dark overlay */}
