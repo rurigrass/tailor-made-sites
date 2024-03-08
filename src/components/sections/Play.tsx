@@ -20,7 +20,7 @@ const Play = ({ triggerBall, play }: PlayProps) => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 144 178"
-        className=" hover:cursor-pointer"
+        className=" hover:cursor-pointer outline-none"
         onClick={() => triggerBall()}
       >
         <SVGMorph paths={[shape1, shape1_morphed, shape1]} play={play} />
