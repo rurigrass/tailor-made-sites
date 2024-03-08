@@ -89,10 +89,10 @@ export default function Home(props: HomeProps) {
           <div className="mb-10">
             <Title textColour={textColour} ref={titleElement} />
           </div>
-          <div className="absolute bottom-64">
+          <div className="absolute bottom-[20%]">
             <Play triggerBall={() => setPlay(!play)} play={play} />
           </div>
-          <div className="w-full mt-20">
+          <div className="w-full mt-[15%]">
             <CurlyText textColour={textColour} />
           </div>
         </div>

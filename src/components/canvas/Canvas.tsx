@@ -78,7 +78,7 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
 
   return (
     <div className="absolute">
-      <canvas ref={canvasRef} {...rest} width="500" height="500" />
+      <canvas ref={canvasRef} {...rest} width="250" height="500" />
     </div>
   );
 };
