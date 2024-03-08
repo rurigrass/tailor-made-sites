@@ -70,9 +70,8 @@ export default function Home(props: HomeProps) {
 
   return (
     <>
-      {/* prev full height h-[calc(100dvh)] */}
       <motion.main
-        className={`h-[calc(100dvh)] cursor-default overscroll-contain ${mainFont}`}
+        className={`h-[calc(100dvh)] w-full cursor-default overscroll-contain ${mainFont}`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
