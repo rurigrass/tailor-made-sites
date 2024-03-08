@@ -18,7 +18,7 @@ const CurlyText = ({ textColour }: CurlyTextProps) => {
         <text className="text-[9px] " style={{ fill: textColour }}>
           {[...Array(8)].map((_, i) => {
             return (
-              <textPath href="#curve" startOffset={i * 25 + "%"}>
+              <textPath key={i} href="#curve" startOffset={i * 25 + "%"}>
                 A Site To Suit You
               </textPath>
             );
