@@ -72,7 +72,7 @@ export default function Home(props: HomeProps) {
     <>
       {/* prev full height h-[calc(100dvh)] */}
       <motion.main
-        className={`h-[100vh] cursor-default overscroll-contain ${mainFont}`}
+        className={`h-[calc(100dvh)] cursor-default overscroll-contain ${mainFont}`}
         style={{
           backgroundColor: backgroundColour,
           position: "relative",
@@ -114,6 +114,7 @@ export default function Home(props: HomeProps) {
         />
         <BottomBar />
       </motion.main>
+      <div className="h-[50vh] flex justify-center items-center">Section 2</div>
     </>
   );
 }

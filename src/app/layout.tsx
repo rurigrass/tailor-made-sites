@@ -33,7 +33,7 @@ export default function RootLayout(props: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${fonts.adventPro.variable} ${fonts.belleza.variable} ${fonts.capriola.variable} ${fonts.caudex.variable} ${fonts.cinzelDecorative.variable} ${fonts.dmSans.variable} ${fonts.federo.variable} ${fonts.kronaOne.variable} ${fonts.roboto.variable} ${fonts.spaceGrotesk.variable} ${fonts.syne.variable} ${fonts.italiana.variable}`}
+      className={`touch-none ${fonts.adventPro.variable} ${fonts.belleza.variable} ${fonts.capriola.variable} ${fonts.caudex.variable} ${fonts.cinzelDecorative.variable} ${fonts.dmSans.variable} ${fonts.federo.variable} ${fonts.kronaOne.variable} ${fonts.roboto.variable} ${fonts.spaceGrotesk.variable} ${fonts.syne.variable} ${fonts.italiana.variable}`}
     >
       <body>{props.children}</body>
     </html>
