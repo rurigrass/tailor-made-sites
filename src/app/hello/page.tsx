@@ -5,14 +5,14 @@ import { useSpring } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Page() {
-  const { data: fonts, isLoading: fontsLoading } = useGoogleFonts();
+  // const { data: fonts, isLoading: fontsLoading } = useGoogleFonts();
 
   let dafont;
 
-  if (fonts) {
-    dafont = fonts[230];
-    console.log(dafont.family);
-  }
+  // if (fonts) {
+  //   dafont = fonts[230];
+  //   console.log(dafont.family);
+  // }
 
   let spring = useSpring(0);
   useEffect(() => {
