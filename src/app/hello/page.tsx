@@ -1,6 +1,8 @@
 "use client";
 
 import { useGoogleFonts } from "@/components/lib/hooks/useGoogleFonts";
+import { useSpring } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Page() {
   const { data: fonts, isLoading: fontsLoading } = useGoogleFonts();
@@ -11,6 +13,16 @@ export default function Page() {
     dafont = fonts[230];
     console.log(dafont.family);
   }
+
+  let spring = useSpring(0);
+  useEffect(() => {
+    spring.onChange((v) => {
+      console.log(v);
+    });
+
+    spring.set(20);
+    console.log(spring);
+  }, []);
 
   return (
     <>

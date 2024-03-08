@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useSpring } from "framer-motion";
 
 type CanvasProps = {
   updateCounter: (value: number) => void;
@@ -9,35 +10,26 @@ type CanvasProps = {
 const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ballColourRef = useRef<string>(ballColour);
+  const ballRadiusRef = useSpring(10);
 
-  const drawBall = (
-    ctx: CanvasRenderingContext2D,
-    ballRadius: number,
-    x: number,
-    y: number
-  ) => {
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = ballColourRef.current;
-    ctx.fill();
-    ctx.closePath();
-    // console.log(play);
+  const drawBall = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
+    const ballRadius = ballRadiusRef.get();
+    if (ballRadius > 0) {
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+      ctx.fillStyle = ballColourRef.current;
+      ctx.fill();
+      ctx.closePath();
+    }
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      // console.log(ballColour);
-      // find transparent colour
-      console.log(ballColourRef);
+    play ? ballRadiusRef.set(10) : ballRadiusRef.set(0);
+  }, [play]);
 
-      play
-        ? (ballColourRef.current = ballColour)
-        : // : (ballColourRef.current = "rgba(0,0,0,0)");
-          (ballColourRef.current = "hsla(0, 0%, 0%, 0)");
-    }, 300); // 300 milliseconds = 0.3 seconds
-
-    return () => clearTimeout(timer);
-  }, [ballColour, play]);
+  useEffect(() => {
+    ballColourRef.current = ballColour;
+  }, [ballColour]);
 
   //do a ballSizeRef
 
@@ -61,7 +53,7 @@ const Canvas = ({ updateCounter, ballColour, play, ...rest }: CanvasProps) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // if (play) {
-      drawBall(ctx, ballRadius, x, y);
+      drawBall(ctx, x, y);
 
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;

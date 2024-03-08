@@ -6,7 +6,7 @@ import Title from "@/components/sections/Title";
 import StickyCursor from "@/components/lib/StickyCursor";
 import { useColoursStore } from "@/state/colours";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useSpring } from "framer-motion";
 import Canvas from "@/components/canvas/Canvas";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
