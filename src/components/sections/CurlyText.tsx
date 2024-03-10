@@ -14,8 +14,6 @@ const CurlyText = ({ textColour }: CurlyTextProps) => {
     // offset: ["start end", "end end"],
   });
 
-  //   console.log(scrollYProgress);
-
   useEffect(() => {
     scrollYProgress.on("change", (e) => console.log(e));
   }, []);
